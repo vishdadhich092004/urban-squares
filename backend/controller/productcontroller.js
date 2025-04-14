@@ -30,15 +30,38 @@ const addproperty = async (req, res) => {
     // Upload images to ImageKit and delete after upload
     const imageUrls = await Promise.all(
       images.map(async (item) => {
-        const result = await imagekit.upload({
-          file: fs.readFileSync(item.path),
-          fileName: item.originalname,
-          folder: "Property",
-        });
-        fs.unlink(item.path, (err) => {
-          if (err) console.log("Error deleting the file: ", err);
-        });
-        return result.url;
+        try {
+          console.log("Processing file:", item.path);
+          if (!fs.existsSync(item.path)) {
+            throw new Error(`File not found: ${item.path}`);
+          }
+
+          const fileBuffer = fs.readFileSync(item.path);
+          const result = await imagekit.upload({
+            file: fileBuffer,
+            fileName: item.originalname,
+            folder: "Property",
+          });
+
+          // Only delete the file if upload was successful
+          if (result) {
+            fs.unlink(item.path, (err) => {
+              if (err) {
+                console.error("Error deleting the file:", err);
+              } else {
+                console.log("File deleted successfully:", item.path);
+              }
+            });
+            return result.url;
+          }
+        } catch (error) {
+          console.error("Error in image upload process:", {
+            error: error.message,
+            filePath: item.path,
+            fileName: item.originalname,
+          });
+          throw error;
+        }
       })
     );
 
@@ -154,15 +177,38 @@ const updateproperty = async (req, res) => {
     // Upload images to ImageKit and delete after upload
     const imageUrls = await Promise.all(
       images.map(async (item) => {
-        const result = await imagekit.upload({
-          file: fs.readFileSync(item.path),
-          fileName: item.originalname,
-          folder: "Property",
-        });
-        fs.unlink(item.path, (err) => {
-          if (err) console.log("Error deleting the file: ", err);
-        });
-        return result.url;
+        try {
+          console.log("Processing file:", item.path);
+          if (!fs.existsSync(item.path)) {
+            throw new Error(`File not found: ${item.path}`);
+          }
+
+          const fileBuffer = fs.readFileSync(item.path);
+          const result = await imagekit.upload({
+            file: fileBuffer,
+            fileName: item.originalname,
+            folder: "Property",
+          });
+
+          // Only delete the file if upload was successful
+          if (result) {
+            fs.unlink(item.path, (err) => {
+              if (err) {
+                console.error("Error deleting the file:", err);
+              } else {
+                console.log("File deleted successfully:", item.path);
+              }
+            });
+            return result.url;
+          }
+        } catch (error) {
+          console.error("Error in image upload process:", {
+            error: error.message,
+            filePath: item.path,
+            fileName: item.originalname,
+          });
+          throw error;
+        }
       })
     );
 
