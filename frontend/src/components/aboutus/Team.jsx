@@ -16,11 +16,11 @@ export default function Team() {
           <h2 className="text-4xl font-bold mb-4">Meet Our Team</h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            The passionate individuals behind UrbanSquare's success
+            The passionate individuals behind UrbanSquare&apos;s success
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}

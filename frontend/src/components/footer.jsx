@@ -114,7 +114,7 @@ const socialLinks = [
   },
   {
     icon: Github,
-    href: "https://github.com/AAYUSH412/Real-Estate-Website",
+    href: "https://github.com/vishdadhich092004/urban-squares",
     label: "GitHub",
     color: "bg-[#333]",
     hoverColor: "hover:bg-gray-800",
@@ -248,18 +248,18 @@ const helpLinks = [
 const contactInfo = [
   {
     icon: MapPin,
-    text: "123 Property Plaza, Silicon Valley, CA 94088",
-    href: "https://maps.google.com/?q=123+Property+Plaza,Silicon+Valley,CA+94088",
+    text: "Floor 2/4/5, Block 1, Sector 1, Ranchi, Jharkhand, India",
+    href: "https://maps.google.com/?q=Floor+2/4/5,+Block+1,+Sector+1,+Ranchi,+Jharkhand,+India",
   },
   {
     icon: Phone,
-    text: "+1 (234) 567-890",
-    href: "tel:+1234567890",
+    text: "+91 9772778822",
+    href: "tel:+919772778822",
   },
   {
     icon: Mail,
-    text: "support@UrbanSquare.com",
-    href: "mailto:support@UrbanSquare.com",
+    text: "support@urbansquare.com",
+    href: "mailto:support@urbansquare.com",
   },
 ];
 

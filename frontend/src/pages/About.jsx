@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import Hero from '../components/aboutus/Hero';
-import Mission from '../components/aboutus/Mission';
-import Values from '../components/aboutus/Values';
-import Team from '../components/aboutus/Team';
-import Benefits from '../components/aboutus/Benefit';
-import Milestones from '../components/aboutus/Milestone'; 
+import { useEffect } from "react";
+import Hero from "../components/aboutus/Hero";
+import Mission from "../components/aboutus/Mission";
+import Values from "../components/aboutus/Values";
+import Team from "../components/aboutus/Team";
+import Benefits from "../components/aboutus/Benefit";
+import Milestones from "../components/aboutus/Milestone";
 
 const About = () => {
   useEffect(() => {
@@ -14,13 +14,13 @@ const About = () => {
   return (
     <div className="overflow-hidden">
       <Hero />
+      <Team />
       <Mission />
       <Values />
-      <Team />
       <Benefits />
       <Milestones />
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import ContactInfoItem from "./InfoItem";
@@ -7,19 +6,19 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    content: "+1 (234) 567-890",
-    link: "tel:+1234567890",
+    content: "+91 9772778822",
+    link: "tel:+919772778822",
   },
   {
     icon: Mail,
     title: "Email",
-    content: "support@UrbanSquare.com",
-    link: "mailto:support@UrbanSquare.com",
+    content: "support@urbansquare.com",
+    link: "mailto:support@urbansquare.com",
   },
   {
     icon: MapPin,
     title: "Address",
-    content: "123 Main Street, City, Country",
+    content: "Floor 2/4/5, Block 1, Sector 1, Ranchi, Jharkhand, India",
     link: "#map",
   },
   {

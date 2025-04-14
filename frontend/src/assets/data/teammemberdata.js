@@ -1,26 +1,38 @@
-import nakulimage from '../images/nakul.png';
-import aayushimage from '../images/aayush.png';
-
 export const teamMembers = [
-    {
-      name: 'Nakul Lagad',
-      position: 'Founder & CEO',
-      bio: 'With 15+ years in real estate, Nakul leads our vision of transforming property search.',
-      image: nakulimage,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-        instagram: '#',
-      },
+  {
+    name: "Vishesh Dadhich",
+    position: "Wesbite DevPaglu",
+    bio: "Decent Developer from Punjab. Made this website with hate.",
+    image:
+      "https://media.licdn.com/dms/image/v2/D5603AQGGcKb_CTY0Kw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1722096256945?e=1750291200&v=beta&t=WF76pHHqP1sDdyP2FyImP3O__humDU1_4v6dBOgvPNc",
+    social: {
+      linkedin: "https://www.linkedin.com/in/vishesh-dadhich-315788257/",
+      twitter: "https://x.com/emVishesh",
+      instagram: "#",
     },
-    {
-      name: 'Aayush Vaghela',
-      position: 'Chief Technology Officer',
-      bio: "Tech innovator driving our platform's cutting-edge solutions.",
-      image: aayushimage,
-      social: {
-        linkedin: '#',
-        twitter: '#',
-      },
-    }
-  ];
+  },
+  {
+    name: "Harshit Rajpriya Shobhane",
+    position: "Computer Network Paglu",
+    bio: "Decent Developer from Madhya Pradesh. Made this website with hate.",
+    image:
+      "https://media.licdn.com/dms/image/v2/D4D03AQFbCLf0_mh0NQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1698340238212?e=1750291200&v=beta&t=gmr10fiaedMYQeELiY-Xaf3nS4o_v48jfArYFxbB55c",
+    social: {
+      linkedin: "https://www.linkedin.com/in/harshitshobhane/",
+      twitter: "#",
+      instagram: "#",
+    },
+  },
+  {
+    name: "Soumy Rajora",
+    position: "GOG Paglu",
+    bio: "Decent Developer from Rajasthan. Made this website with hate.",
+    image:
+      "https://media.licdn.com/dms/image/v2/D4D03AQHc1k3VvlcHFg/profile-displayphoto-shrink_400_400/B4DZYZK__iHsAk-/0/1744179037832?e=1750291200&v=beta&t=lUxgJCXpo57Jw_-D5t0chK2OiB6oWp9X0o6sMaNqA3c",
+    social: {
+      linkedin: "https://www.linkedin.com/in/soumy-rajora-b21b24256/",
+      twitter: "#",
+      instagram: "#",
+    },
+  },
+];
