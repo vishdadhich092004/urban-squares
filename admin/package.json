@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "description": "UrbanSquare admin dashboard for property management",
-  "author": "Aayush Vaghela",
+  "author": "Vishesh Dadhich",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AAYUSH412/Real-Estate-Website"
+    "url": "https://github.com/vishdadhich092004/urban-squares"
   },
   "scripts": {
     "dev": "vite",
