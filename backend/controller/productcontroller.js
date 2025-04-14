@@ -125,67 +125,13 @@ const updateproperty = async (req, res) => {
 
     const property = await Property.findById(id);
     if (!property) {
-      console.log("Property not found with ID:", id); // Debugging line
+      console.log("Property not found with ID:", id);
       return res
         .status(404)
         .json({ message: "Property not found", success: false });
     }
 
-    if (!req.files) {
-      // No new images provided
-      property.title = title;
-      property.location = location;
-      property.price = price;
-      property.beds = beds;
-      property.baths = baths;
-      property.sqft = sqft;
-      property.type = type;
-      property.availability = availability;
-      property.description = description;
-      property.amenities = amenities;
-      property.phone = phone;
-      // Keep existing images
-      await property.save();
-      return res.json({
-        message: "Property updated successfully",
-        success: true,
-      });
-    }
-
-    const image1 = req.files.image1 && req.files.image1[0];
-    const image2 = req.files.image2 && req.files.image2[0];
-    const image3 = req.files.image3 && req.files.image3[0];
-    const image4 = req.files.image4 && req.files.image4[0];
-
-    const images = [image1, image2, image3, image4].filter(
-      (item) => item !== undefined
-    );
-
-    // Upload images to ImageKit directly from memory
-    const imageUrls = await Promise.all(
-      images.map(async (item) => {
-        try {
-          console.log("Processing file:", item.originalname);
-          const result = await imagekit.upload({
-            file: item.buffer, // Use the buffer directly from memory
-            fileName: item.originalname,
-            folder: "Property",
-          });
-
-          if (result) {
-            console.log("File uploaded successfully:", item.originalname);
-            return result.url;
-          }
-        } catch (error) {
-          console.error("Error in image upload process:", {
-            error: error.message,
-            fileName: item.originalname,
-          });
-          throw error;
-        }
-      })
-    );
-
+    // Update basic property information
     property.title = title;
     property.location = location;
     property.price = price;
@@ -196,11 +142,54 @@ const updateproperty = async (req, res) => {
     property.availability = availability;
     property.description = description;
     property.amenities = amenities;
-    property.image = imageUrls;
     property.phone = phone;
 
+    if (req.files) {
+      const image1 = req.files.image1 && req.files.image1[0];
+      const image2 = req.files.image2 && req.files.image2[0];
+      const image3 = req.files.image3 && req.files.image3[0];
+      const image4 = req.files.image4 && req.files.image4[0];
+
+      const newImages = [image1, image2, image3, image4].filter(
+        (item) => item !== undefined
+      );
+
+      if (newImages.length > 0) {
+        // Upload new images to ImageKit
+        const newImageUrls = await Promise.all(
+          newImages.map(async (item) => {
+            try {
+              console.log("Processing file:", item.originalname);
+              const result = await imagekit.upload({
+                file: item.buffer,
+                fileName: item.originalname,
+                folder: "Property",
+              });
+
+              if (result) {
+                console.log("File uploaded successfully:", item.originalname);
+                return result.url;
+              }
+            } catch (error) {
+              console.error("Error in image upload process:", {
+                error: error.message,
+                fileName: item.originalname,
+              });
+              throw error;
+            }
+          })
+        );
+
+        // Combine existing images with new images
+        property.image = [...property.image, ...newImageUrls];
+      }
+    }
+
     await property.save();
-    res.json({ message: "Property updated successfully", success: true });
+    return res.json({
+      message: "Property updated successfully",
+      success: true,
+    });
   } catch (error) {
     console.log("Error updating product: ", error);
     res.status(500).json({ message: "Server Error", success: false });
