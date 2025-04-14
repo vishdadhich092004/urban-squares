@@ -290,40 +290,7 @@ const AIPropertyHub = () => {
               Discover your perfect property with AI-powered insights and market
               analysis
             </p>
-            <div className="bg-white/95 backdrop-blur rounded-lg sm:rounded-xl p-5 sm:p-6 shadow-md sm:shadow-lg">
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
-                  <AlertCircle className="w-6 h-6 text-amber-600" />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold mb-2">
-                    AI Features Limited Online
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Due to API limitations, AI property features are only
-                    available in local development environment.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <a
-                      href="https://github.com/AAYUSH412/Real-Estate-Website"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span>View on GitHub</span>
-                    </a>
-                    <a
-                      href="https://github.com/AAYUSH412/Real-Estate-Website/archive/refs/heads/main.zip"
-                      className="flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Download Repository</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <div className="bg-white/95 backdrop-blur rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-md sm:shadow-lg">
               <SearchForm onSearch={handleSearch} isLoading={isLoading} />
             </div>
