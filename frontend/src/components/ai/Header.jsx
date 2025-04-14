@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, ArrowLeft, Menu, X } from 'lucide-react';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import { motion, AnimatePresence } from "framer-motion";
+import { Brain, ArrowLeft, Menu, X } from "lucide-react";
 
 const Header = ({ title = "AI Property Assistant" }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ const Header = ({ title = "AI Property Assistant" }) => {
   };
 
   const handleBack = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -46,7 +46,7 @@ const Header = ({ title = "AI Property Assistant" }) => {
         {/* Mobile Title (centered) */}
         <div className="sm:hidden absolute left-1/2 transform -translate-x-1/2">
           <h1 className="text-lg font-bold text-white">
-            {title.split(' ').slice(0, 2).join(' ')}
+            {title.split(" ").slice(0, 2).join(" ")}
           </h1>
         </div>
 
@@ -69,7 +69,11 @@ const Header = ({ title = "AI Property Assistant" }) => {
             className="sm:hidden p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isMenuOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </motion.button>
         </div>
       </div>
@@ -79,7 +83,7 @@ const Header = ({ title = "AI Property Assistant" }) => {
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
             className="sm:hidden bg-indigo-700 shadow-lg overflow-hidden"
@@ -93,9 +97,9 @@ const Header = ({ title = "AI Property Assistant" }) => {
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back to Home</span>
               </motion.button>
-              
-              <Link 
-                to="/properties" 
+
+              <Link
+                to="/properties"
                 onClick={() => setIsMenuOpen(false)}
                 className="text-center px-4 py-3 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors"
               >
