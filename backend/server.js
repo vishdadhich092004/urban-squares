@@ -47,9 +47,7 @@ app.use(
       "http://localhost:4000",
       "http://localhost:5174",
       "http://localhost:5173",
-      "https://UrbanSquare.vercel.app",
-      "https://real-estate-website-admin.onrender.com",
-      "https://real-estate-website-backend-zfu7.onrender.com",
+      "https://urban-squares.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"], // Added HEAD
