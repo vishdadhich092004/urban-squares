@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { RadialGradient } from "react-text-gradients";
-
+import { HeroHighlight } from "./ui/hero-highlight";
 const popularLocations = [
   "Mumbai",
   "Delhi",
@@ -151,7 +151,7 @@ const Hero = () => {
                 >
                   Find Your Perfect
                   <br />
-                  <span className="text-white">Living Space</span>
+                  <span className="text-white z-50">Living Space</span>
                 </RadialGradient>
               </h1>
 

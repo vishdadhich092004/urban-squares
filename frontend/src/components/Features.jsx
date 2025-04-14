@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { features } from "../assets/featuredata";
-
+import { BackgroundBeams } from "./ui/background-beams";
 // Enhanced animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,8 +29,9 @@ const cardVariants = {
 
 const Features = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden relative">
+      <BackgroundBeams className="absolute inset-0 z-0" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
