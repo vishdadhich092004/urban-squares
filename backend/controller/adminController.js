@@ -42,7 +42,6 @@ export const getAdminStats = async (req, res) => {
       getRecentActivity(),
       getViewsData(),
     ]);
-
     res.json({
       success: true,
       stats: {

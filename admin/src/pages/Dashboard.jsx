@@ -60,7 +60,7 @@ const Dashboard = () => {
         text: "Property Views Over Time",
       },
       tooltip: {
-        mode: 'index',
+        mode: "index",
         intersect: false,
       },
     },
@@ -69,32 +69,32 @@ const Dashboard = () => {
         beginAtZero: true,
         ticks: {
           stepSize: 1,
-          precision: 0
+          precision: 0,
         },
       },
       x: {
         grid: {
-          display: false
+          display: false,
         },
         ticks: {
           maxRotation: 45,
-          minRotation: 45
-        }
-      }
+          minRotation: 45,
+        },
+      },
     },
     interaction: {
       intersect: false,
-      mode: 'index'
+      mode: "index",
     },
     elements: {
       line: {
-        tension: 0.4
+        tension: 0.4,
       },
       point: {
         radius: 4,
-        hoverRadius: 6
-      }
-    }
+        hoverRadius: 6,
+      },
+    },
   };
 
   const fetchStats = async () => {
@@ -204,7 +204,9 @@ const Dashboard = () => {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-1">Dashboard</h1>
-            <p className="text-gray-600">Overview of your property management system</p>
+            <p className="text-gray-600">
+              Overview of your property management system
+            </p>
           </div>
           <button
             onClick={fetchStats}
@@ -234,8 +236,12 @@ const Dashboard = () => {
                   Last 30 days
                 </span>
               </div>
-              <h3 className="text-lg font-medium text-gray-900">{stat.title}</h3>
-              <p className="text-3xl font-bold text-gray-900 mt-2">{stat.value}</p>
+              <h3 className="text-lg font-medium text-gray-900">
+                {stat.title}
+              </h3>
+              <p className="text-3xl font-bold text-gray-900 mt-2">
+                {stat.value}
+              </p>
               <p className="text-sm text-gray-500 mt-1">{stat.description}</p>
             </motion.div>
           ))}
@@ -289,9 +295,6 @@ const Dashboard = () => {
                     <div>
                       <p className="font-medium text-gray-900">
                         {activity.description}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        {new Date(activity.timestamp).toLocaleString()}
                       </p>
                     </div>
                   </motion.div>
