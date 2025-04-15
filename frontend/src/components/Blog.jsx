@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
-import { Calendar, ArrowRight, Clock, Share2, Bookmark, BookmarkCheck, Search, Tag, ExternalLink, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { blogPosts } from '../assets/blogdata';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import {
+  Calendar,
+  ArrowRight,
+  Clock,
+  Share2,
+  Bookmark,
+  BookmarkCheck,
+  Search,
+  Tag,
+  ExternalLink,
+  ChevronRight,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { blogPosts } from "../assets/blogdata";
+import { toast } from "react-toastify";
 
 // Animation variants
 const containerVariants = {
@@ -11,30 +22,30 @@ const containerVariants = {
     opacity: 1,
     transition: {
       delayChildren: 0.3,
-      staggerChildren: 0.15
-    }
-  }
+      staggerChildren: 0.15,
+    },
+  },
 };
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: {
       type: "spring",
       stiffness: 80,
-      damping: 15
-    }
-  }
+      damping: 15,
+    },
+  },
 };
 
 const pulseAnimation = {
   scale: [1, 1.05, 1],
-  transition: { 
+  transition: {
     duration: 0.4,
-    ease: "easeInOut"
-  }
+    ease: "easeInOut",
+  },
 };
 
 // BlogCard component
@@ -49,7 +60,7 @@ const BlogCard = ({ post }) => {
         await navigator.share({
           title: post.title,
           text: post.excerpt,
-          url: post.link
+          url: post.link,
         });
         toast.success("Post shared successfully!");
       } else {
@@ -57,7 +68,7 @@ const BlogCard = ({ post }) => {
         toast.success("Link copied to clipboard!");
       }
     } catch (error) {
-      console.error('Error sharing:', error);
+      console.error("Error sharing:", error);
       toast.error("Unable to share post");
     }
   };
@@ -65,7 +76,7 @@ const BlogCard = ({ post }) => {
   const handleBookmark = (e) => {
     e.stopPropagation();
     setIsBookmarked(!isBookmarked);
-    
+
     if (!isBookmarked) {
       toast.success(`Saved "${post.title}" to your reading list`);
     } else {
@@ -74,11 +85,11 @@ const BlogCard = ({ post }) => {
   };
 
   const handleReadMore = () => {
-    window.open(post.link, '_blank', 'noopener,noreferrer');
+    window.open(post.link, "_blank", "noopener,noreferrer");
   };
 
-  const estimatedReadTime = Math.ceil(post.excerpt.split(' ').length / 200);
-  
+  const estimatedReadTime = Math.ceil(post.excerpt.split(" ").length / 200);
+
   // Extract category from post (or use default)
   const category = post.category || "Real Estate";
 
@@ -86,7 +97,11 @@ const BlogCard = ({ post }) => {
     <motion.div
       className="group bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100"
       variants={cardVariants}
-      whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+      whileHover={{
+        y: -8,
+        boxShadow:
+          "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+      }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onClick={handleReadMore}
@@ -97,17 +112,21 @@ const BlogCard = ({ post }) => {
           alt={post.title}
           className="w-full h-64 object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
         />
-        <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-70'}`} />
-        
+        <div
+          className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent transition-opacity duration-300 ${
+            isHovered ? "opacity-100" : "opacity-70"
+          }`}
+        />
+
         <div className="absolute top-4 left-4 z-10">
           <span className="px-3 py-1.5 bg-blue-600/90 backdrop-blur-sm text-white text-xs font-medium rounded-full shadow-sm">
             {category}
           </span>
         </div>
-        
+
         <AnimatePresence>
           {isHovered && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
@@ -131,9 +150,10 @@ const BlogCard = ({ post }) => {
             whileTap={pulseAnimation}
             onClick={handleBookmark}
             className={`p-2 backdrop-blur-sm rounded-full shadow-lg 
-              ${isBookmarked 
-                ? 'bg-blue-600 text-white' 
-                : 'bg-white/80 text-gray-700 hover:bg-blue-50'
+              ${
+                isBookmarked
+                  ? "bg-blue-600 text-white"
+                  : "bg-white/80 text-gray-700 hover:bg-blue-50"
               } transition-colors duration-200`}
           >
             {isBookmarked ? (
@@ -142,7 +162,7 @@ const BlogCard = ({ post }) => {
               <Bookmark className="w-4 h-4" />
             )}
           </motion.button>
-          
+
           <motion.button
             whileTap={pulseAnimation}
             onClick={handleShare}
@@ -168,7 +188,7 @@ const BlogCard = ({ post }) => {
         <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
           {post.title}
         </h3>
-        
+
         <p className="text-gray-600 mb-4 line-clamp-3 text-sm leading-relaxed">
           {post.excerpt}
         </p>
@@ -197,16 +217,19 @@ const BlogCard = ({ post }) => {
 
 // Main Blog component
 const Blog = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  
-  const categories = ['All', 'Buying', 'Selling', 'Investment', 'Tips'];
-  
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'All' || (post.category || 'Real Estate') === selectedCategory;
-    
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const categories = ["All", "Buying", "Selling", "Investment", "Tips"];
+
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "All" ||
+      (post.category || "Real Estate") === selectedCategory;
+
     return matchesSearch && matchesCategory;
   });
 
@@ -227,7 +250,7 @@ const Blog = () => {
             Expert advice and tips for your real estate journey
           </p>
         </motion.div>
-        
+
         {/* Search and filter section */}
         <div className="mb-12">
           <div className="flex flex-col md:flex-row gap-4 justify-between">
@@ -241,16 +264,16 @@ const Blog = () => {
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             </div>
-            
+
             <div className="flex flex-wrap gap-2">
-              {categories.map(category => (
+              {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                     selectedCategory === category
-                      ? 'bg-blue-600 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
                   {category}
@@ -259,7 +282,7 @@ const Blog = () => {
             </div>
           </div>
         </div>
-        
+
         {filteredPosts.length > 0 ? (
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -279,17 +302,19 @@ const Blog = () => {
             className="text-center py-16 bg-gray-50 rounded-xl border border-gray-100"
           >
             <Search className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-xl font-medium text-gray-700 mb-2">No articles found</h3>
+            <h3 className="text-xl font-medium text-gray-700 mb-2">
+              No articles found
+            </h3>
             <p className="text-gray-500 max-w-md mx-auto">
-              We couldn't find any articles matching your search criteria. 
-              Try using different keywords or browse all categories.
+              We couldn't find any articles matching your search criteria. Try
+              using different keywords or browse all categories.
             </p>
           </motion.div>
         )}
-        
+
         {/* View all articles button */}
         <div className="text-center mt-16">
-          <motion.button
+          {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl 
@@ -297,7 +322,7 @@ const Blog = () => {
           >
             View All Articles
             <ArrowRight className="w-4 h-4 ml-2" />
-          </motion.button>
+          </motion.button> */}
         </div>
       </div>
     </section>
