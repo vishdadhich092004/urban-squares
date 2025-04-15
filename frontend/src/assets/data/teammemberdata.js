@@ -1,7 +1,7 @@
 export const teamMembers = [
   {
     name: "Vishesh Dadhich",
-    position: "Wesbite DevPaglu",
+    position: "Just a student",
     bio: "Decent Developer from Punjab. Made this website with hate.",
     image:
       "https://media.licdn.com/dms/image/v2/D5603AQGGcKb_CTY0Kw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1722096256945?e=1750291200&v=beta&t=WF76pHHqP1sDdyP2FyImP3O__humDU1_4v6dBOgvPNc",
@@ -13,7 +13,7 @@ export const teamMembers = [
   },
   {
     name: "Harshit Rajpriya Shobhane",
-    position: "Computer Network Paglu",
+    position: "Just a student",
     bio: "Decent Developer from Madhya Pradesh. Made this website with hate.",
     image:
       "https://media.licdn.com/dms/image/v2/D4D03AQFbCLf0_mh0NQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1698340238212?e=1750291200&v=beta&t=gmr10fiaedMYQeELiY-Xaf3nS4o_v48jfArYFxbB55c",
@@ -25,7 +25,7 @@ export const teamMembers = [
   },
   {
     name: "Soumy Rajora",
-    position: "GOG Paglu",
+    position: "Just a student",
     bio: "Decent Developer from Rajasthan. Made this website with hate.",
     image:
       "https://media.licdn.com/dms/image/v2/D4D03AQHc1k3VvlcHFg/profile-displayphoto-shrink_400_400/B4DZYZK__iHsAk-/0/1744179037832?e=1750291200&v=beta&t=lUxgJCXpo57Jw_-D5t0chK2OiB6oWp9X0o6sMaNqA3c",
