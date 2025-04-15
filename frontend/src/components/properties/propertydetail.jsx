@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useEffect, useState, useCallback } from "react";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -10,7 +10,6 @@ import {
   Phone,
   Calendar,
   MapPin,
-  Loader,
   Building,
   Share2,
   ChevronLeft,
@@ -29,7 +28,6 @@ const PropertyDetails = () => {
   const [showSchedule, setShowSchedule] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
   const [copySuccess, setCopySuccess] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProperty = async () => {
@@ -67,13 +65,34 @@ const PropertyDetails = () => {
   }, [id]);
 
   const parseAmenities = (amenities) => {
-    if (!amenities || !Array.isArray(amenities)) return [];
+    if (!amenities) return [];
 
     try {
-      if (typeof amenities[0] === "string") {
-        return JSON.parse(amenities[0].replace(/'/g, '"'));
+      // If amenities is already an array, return it
+      if (Array.isArray(amenities)) {
+        return amenities;
       }
-      return amenities;
+
+      // If it's a string, try to parse it
+      if (typeof amenities === "string") {
+        // First try to parse as JSON
+        try {
+          return JSON.parse(amenities);
+        } catch (e) {
+          // If JSON parsing fails, split by comma and trim each item
+          return amenities.split(",").map((item) => item.trim());
+        }
+      }
+
+      // If it's an array of strings, return it directly
+      if (
+        Array.isArray(amenities) &&
+        amenities.every((item) => typeof item === "string")
+      ) {
+        return amenities;
+      }
+
+      return [];
     } catch (error) {
       console.error("Error parsing amenities:", error);
       return [];

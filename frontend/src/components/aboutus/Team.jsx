@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import TeamMember from "./Teammember";
 import { teamMembers } from "../../assets/data/teammemberdata";
